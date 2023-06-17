@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Note App - All Notes</title>
+  <!-- Include CSS stylesheets here (e.g., Bootstrap) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>All Notes</h1>
+    <ul class="list-group">
+      {% for note in notes %}
+      <li class="list-group-item">
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        <a href="/notes/{{ note._id }}/update" class="btn btn-primary">Edit</a>
+        <form action="/notes/{{ note._id }}/delete" method="POST" style="display: inline;">
+          <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="/notes/create" class="btn btn-success">Create New Note</a>
+  </div>
+  <!-- Include JavaScript files here (e.g., Bootstrap) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
